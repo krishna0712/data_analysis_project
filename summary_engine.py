@@ -63,6 +63,8 @@ def generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month):
     for key, value in kpis.items():
         if key in ["revenue_growth_pct", "order_growth_pct"]:
             summary_str += f"{key}: {value}%\n"
+        elif key in ["total_revenue"]:
+            summary_str += f"{key}: ₹{value}\n"
         else:
             summary_str += f"{key}: {value}\n"
 
