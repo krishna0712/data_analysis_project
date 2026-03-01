@@ -8,6 +8,7 @@ from visualization_engine import (
     plot_revenue_trend,
     plot_top_products
 )
+from report_generator import generate_pdf_report
 
 def run_analysis(filepath):
 
@@ -26,6 +27,10 @@ def run_analysis(filepath):
     print("\n===== STRUCTURED SUMMARY =====\n")
 
     print(summary)
+
+    summary_dict = generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month, as_dict=True)
+    generate_pdf_report(summary_dict)
+    print("\nReport generated successfully !")
 
     return monthly_kpi, product_kpi, risks, summary
 

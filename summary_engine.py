@@ -1,6 +1,6 @@
 # summary_engine.py
 
-def generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month):
+def generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month,as_dict=False):
 
     latest = monthly_kpi.iloc[-1]
     latest_month = str(latest["Year_Month"])
@@ -76,4 +76,12 @@ def generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month):
     for action in action_points:
         summary_str += f"- {action}\n"
 
-    return summary_str
+    if as_dict:
+        return {
+            "kpis": kpis,
+            "risks": risk_points,
+            "actions": action_points
+        }
+    else:
+        # return formatted string as before
+        return summary_str
