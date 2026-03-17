@@ -3,7 +3,7 @@
 import pandas as pd
 
 def load_data(filename: str) -> pd.DataFrame:
-    df = pd.read_csv("sales_data.csv")
+    df = pd.read_csv(filename)
 
     # Convert types
     df["Date"] = pd.to_datetime(df["Date"])

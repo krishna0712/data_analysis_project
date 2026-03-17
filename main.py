@@ -24,13 +24,21 @@ def run_analysis(filepath):
     plot_revenue_trend(monthly_kpi)
     plot_revenue_growth(monthly_kpi)
     plot_top_products(product_kpi)
-    print("\n===== STRUCTURED SUMMARY =====\n")
 
+    print("\n===== STRUCTURED SUMMARY =====\n")
     print(summary)
 
-    summary_dict = generate_summary(monthly_kpi, product_kpi, risks, incomplete_last_month, as_dict=True)
-    generate_pdf_report(summary_dict)
-    print("\nReport generated successfully !")
+    summary_dict = generate_summary(
+        monthly_kpi, product_kpi, risks, incomplete_last_month, as_dict=True
+    )
+
+    generate_pdf_report(
+        summary=summary_dict,
+        monthly_kpi=monthly_kpi,
+        product_kpi=product_kpi,
+        output_filename="Business_Report.pdf",
+        company_name="Kusum Acessories",   # ← change to your client's name
+    )
 
     return monthly_kpi, product_kpi, risks, summary
 
